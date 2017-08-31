@@ -5,16 +5,16 @@ This is a fork of the benchmark code found in [fft.js](https://github.com/indutn
 
 
 
-####Usage
+#### Usage
 ```
 > npm install
 > node .
 ```
 
-####Motivation
+#### Motivation
 I made this repo to test my own efforts on porting of ooura, available on [GitHub](https://github.com/audioplastic/ooura) and [npm](https://www.npmjs.com/package/ooura).
 
-####Libraries currently under test:
+#### Libraries currently under test:
 - [fft.js](https://www.npmjs.com/package/fft.js) - indutny
 - [fft](https://www.npmjs.com/package/fft) - jensnockert
 - [dsp.js](https://github.com/corbanbrook/dsp.js) - corban brook
