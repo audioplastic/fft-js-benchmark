@@ -21,6 +21,6 @@
     "fft.js": "^4.0.3",
     "fourier": "^0.2.1",
     "fourier-transform": "^1.0.2",
-    "ooura": "^2.0.0"
+    "ooura": "github:audioplastic/ooura#develop"
   }
 }

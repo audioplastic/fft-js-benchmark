@@ -61,8 +61,17 @@ function addFftjs(suite, size) {
     });
 }
 
-function addOoura(suite, size) {
-    const f = new external.ooura(size);
+function addOouraReal(suite, size) {
+    const f = new external.ooura(size, {"type":"real"});
+    const input = f.scalarArrayFactory();
+
+    addFiltered(suite, 'ooura', () => {
+        f.fftInPlace(input.buffer);
+    });
+}
+
+function addOouraComplex(suite, size) {
+    const f = new external.ooura(size, {"type":"complex"});
     const input = f.scalarArrayFactory();
 
     addFiltered(suite, 'ooura', () => {
@@ -116,13 +125,13 @@ function transform(size) {
     addJensNockert(suite, size);
     addDSPJS(suite, size);
     addDrom(suite, size);
-    addOoura(suite, size);
+    addOouraComplex(suite, size);
 
     return suite;
 }
 
-function addRealSelf(suite, size) {
-    const f = new FFT(size);
+function addFftjsReal(suite, size) {
+    const f = new external.fftjs(size);
     const input = createInput(f.size);
     const data = f.toComplexArray(input);
     const out = f.createComplexArray();
@@ -147,8 +156,9 @@ function addFourierTransform(suite, size) {
 function realTransform(size) {
     const suite = new benchmark.Suite();
 
-    addRealSelf(suite, size);
+    addFftjsReal(suite, size);
     addFourierTransform(suite, size);
+    addOouraReal(suite, size);
 
     return suite;
 }
@@ -164,12 +174,12 @@ const benchmarks = [
     { title: 'transform size=4096', suite: transform(4096) },
     { title: 'transform size=8192', suite: transform(8192) },
     { title: 'transform size=16384', suite: transform(16384) },
-    { title: 'transform size=32768', suite: transform(32768) },
-    { title: 'transform size=65536', suite: transform(65536) },
-    // { title: 'realTransform size=2048', suite: realTransform(2048) },
-    // { title: 'realTransform size=4096', suite: realTransform(4096) },
-    // { title: 'realTransform size=8192', suite: realTransform(8192) },
-    // { title: 'realTransform size=16384', suite: realTransform(16384) }
+    // { title: 'transform size=32768', suite: transform(32768) },
+    // { title: 'transform size=65536', suite: transform(65536) },
+    { title: 'realTransform size=2048', suite: realTransform(2048) },
+    { title: 'realTransform size=4096', suite: realTransform(4096) },
+    { title: 'realTransform size=8192', suite: realTransform(8192) },
+    { title: 'realTransform size=16384', suite: realTransform(16384) }
 ];
 
 /* eslint-disable no- */
