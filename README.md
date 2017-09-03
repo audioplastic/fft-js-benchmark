@@ -22,10 +22,10 @@ I made this repo to test my own efforts on porting of ooura, available on [GitHu
 - [ooura](https://www.npmjs.com/package/ooura) - audioplastic
 
 
-Results - 31st August 2017
+Results - 3rd September 2017
 -------------------------
 
-![first results](./img/31-8-2017.png)
+![first results](./img/3-9-2017.png)
 
 
 - Node: 8.4.0

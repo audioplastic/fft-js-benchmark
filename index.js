@@ -165,21 +165,21 @@ function realTransform(size) {
 
 const benchmarks = [
     // { title: 'table construction', suite: construct(16384) },
-    { title: 'transform size=64', suite: transform(64) },
-    { title: 'transform size=128', suite: transform(128) },
-    { title: 'transform size=256', suite: transform(256) },
-    { title: 'transform size=512', suite: transform(512) },
-    { title: 'transform size=1024', suite: transform(1024) },
-    { title: 'transform size=2048', suite: transform(2048) },
-    { title: 'transform size=4096', suite: transform(4096) },
-    { title: 'transform size=8192', suite: transform(8192) },
-    { title: 'transform size=16384', suite: transform(16384) },
-    // { title: 'transform size=32768', suite: transform(32768) },
-    // { title: 'transform size=65536', suite: transform(65536) },
-    { title: 'realTransform size=2048', suite: realTransform(2048) },
-    { title: 'realTransform size=4096', suite: realTransform(4096) },
-    { title: 'realTransform size=8192', suite: realTransform(8192) },
-    { title: 'realTransform size=16384', suite: realTransform(16384) }
+    // { title: 'transform size=64', suite: transform(64) },
+    // { title: 'transform size=128', suite: transform(128) },
+    // { title: 'transform size=256', suite: transform(256) },
+    // { title: 'transform size=512', suite: transform(512) },
+    // { title: 'transform size=1024', suite: transform(1024) },
+    // { title: 'transform size=2048', suite: transform(2048) },
+    // { title: 'transform size=4096', suite: transform(4096) },
+    // { title: 'transform size=8192', suite: transform(8192) },
+    // { title: 'transform size=16384', suite: transform(16384) },
+    { title: 'transform size=32768', suite: transform(32768) },
+    { title: 'transform size=65536', suite: transform(65536) },
+    // { title: 'realTransform size=2048', suite: realTransform(2048) },
+    // { title: 'realTransform size=4096', suite: realTransform(4096) },
+    // { title: 'realTransform size=8192', suite: realTransform(8192) },
+    // { title: 'realTransform size=16384', suite: realTransform(16384) }
 ];
 
 /* eslint-disable no- */
