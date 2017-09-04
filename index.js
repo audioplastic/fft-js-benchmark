@@ -61,20 +61,38 @@ function addFftjs(suite, size) {
     });
 }
 
-function addOouraReal(suite, size) {
-    const f = new external.ooura(size, {"type":"real"});
+function addOouraReal4(suite, size) {
+    const f = new external.ooura(size, {"type":"real", "radix":4});
     const input = f.scalarArrayFactory();
 
-    addFiltered(suite, 'ooura', () => {
+    addFiltered(suite, 'ooura-radix-4', () => {
         f.fftInPlace(input.buffer);
     });
 }
 
-function addOouraComplex(suite, size) {
-    const f = new external.ooura(size, {"type":"complex"});
+function addOouraReal8(suite, size) {
+    const f = new external.ooura(size, {"type":"real", "radix":8});
     const input = f.scalarArrayFactory();
 
-    addFiltered(suite, 'ooura', () => {
+    addFiltered(suite, 'ooura-radix-8', () => {
+        f.fftInPlace(input.buffer);
+    });
+}
+
+function addOouraComplex4(suite, size) {
+    const f = new external.ooura(size, {"type":"complex", "radix":4});
+    const input = f.scalarArrayFactory();
+
+    addFiltered(suite, 'ooura-radix-4', () => {
+        f.fftInPlace(input.buffer);
+    });
+}
+
+function addOouraComplex8(suite, size) {
+    const f = new external.ooura(size, {"type":"complex", "radix":8});
+    const input = f.scalarArrayFactory();
+
+    addFiltered(suite, 'ooura-radix-8', () => {
         f.fftInPlace(input.buffer);
     });
 }
@@ -125,7 +143,8 @@ function transform(size) {
     addJensNockert(suite, size);
     addDSPJS(suite, size);
     addDrom(suite, size);
-    addOouraComplex(suite, size);
+    addOouraComplex4(suite, size);
+    addOouraComplex8(suite, size);
 
     return suite;
 }
@@ -158,7 +177,8 @@ function realTransform(size) {
 
     addFftjsReal(suite, size);
     addFourierTransform(suite, size);
-    addOouraReal(suite, size);
+    addOouraReal4(suite, size);
+    addOouraReal8(suite, size);
 
     return suite;
 }
@@ -168,17 +188,17 @@ const benchmarks = [
     // { title: 'transform size=64', suite: transform(64) },
     // { title: 'transform size=128', suite: transform(128) },
     // { title: 'transform size=256', suite: transform(256) },
-    // { title: 'transform size=512', suite: transform(512) },
-    // { title: 'transform size=1024', suite: transform(1024) },
-    // { title: 'transform size=2048', suite: transform(2048) },
+    { title: 'transform size=512', suite: transform(512) },
+    { title: 'transform size=1024', suite: transform(1024) },
+    { title: 'transform size=2048', suite: transform(2048) },
     // { title: 'transform size=4096', suite: transform(4096) },
     // { title: 'transform size=8192', suite: transform(8192) },
     // { title: 'transform size=16384', suite: transform(16384) },
-    { title: 'transform size=32768', suite: transform(32768) },
-    { title: 'transform size=65536', suite: transform(65536) },
-    // { title: 'realTransform size=2048', suite: realTransform(2048) },
-    // { title: 'realTransform size=4096', suite: realTransform(4096) },
-    // { title: 'realTransform size=8192', suite: realTransform(8192) },
+    // { title: 'transform size=32768', suite: transform(32768) },
+    // { title: 'transform size=65536', suite: transform(65536) },
+    { title: 'realTransform size=2048', suite: realTransform(2048) },
+    { title: 'realTransform size=4096', suite: realTransform(4096) },
+    { title: 'realTransform size=8192', suite: realTransform(8192) },
     // { title: 'realTransform size=16384', suite: realTransform(16384) }
 ];
 
